@@ -71,6 +71,12 @@ void main() {
     darabszamokTV[i ~/ 10] += osszes("TV", i, rendelesek);
     darabszamokNR[i ~/ 10] += osszes("NR", i, rendelesek);
   }
+  kimenet += "PL\t${darabszamokPL[0]}\t${darabszamokPL[1]}\t${darabszamokPL[2]}\n";
+  kimenet += "TV\t${darabszamokTV[0]}\t${darabszamokTV[1]}\t${darabszamokTV[2]}\n";
+  kimenet += "NR\t${darabszamokNR[0]}\t${darabszamokNR[1]}\t${darabszamokNR[2]}";
+  print(kimenet);
+  File kampany = File("kampany.txt");
+  kampany.writeAsStringSync(kimenet);
 }
 
 int osszes(String varos, int nap, List<Map<String, dynamic>> lista) {
